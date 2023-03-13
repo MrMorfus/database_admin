@@ -20,4 +20,4 @@ content descriptions:
 * Permissions_SQL           - additional permissions to allow view access to things
 * Purge_OLD_Logins          - clean an entire server of old logins, no longer in the login folder
 * Set_Log_Space_Free        - find all logs and set the free space free
-* 
+* SPID_txt_lookup           - look up the syntax text of a SPID
