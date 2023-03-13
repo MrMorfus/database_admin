@@ -15,3 +15,5 @@ content descriptions:
 * LinkedServer_Add_Acct     - add a linked server with this account based on a list of servers
 * ForAllDBs_Add_AD_acct     - add an active directory account for every database on the server
 * MassUpdate_Owners         - update all database object ownership from whatever to DBO
+* MassUpdate_SQLjobs_SSRS   - update the owner for sql scheduled jobs and ssrs reports
+* 
