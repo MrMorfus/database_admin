@@ -11,4 +11,5 @@ content descriptions:
 * SMTP_Email                 - send an email in powershell
 * Update_DTC_Restart_service - adjust registry keys and restart the DTC service for DTS packages
 * Powershell_Backup          - fancy backup automation for MSSQL server
+* Restart_SQL_Service        - restart SQL services and send emails
 * 
