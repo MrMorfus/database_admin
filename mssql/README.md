@@ -11,3 +11,4 @@ content descriptions:
 * DangerSQL                 - instructions and permissions to turn XP_commandshell on
 * SSRS_Jobs_Lookup          - reports and lookups for ssrs jobs/reports/email updates/etc
 * EXEC_ALL_sqljobs          - start all jobs on the sql server
+* Find_nonascii_char        - search for any non-ascii character in a column
