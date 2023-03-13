@@ -1,0 +1,54 @@
+The following statements work to enable, configure and execute xp_cmdshell via SQL Server:
+
+--1, allow xp_cmdshell
+EXECUTE SP_CONFIGURE 'show advanced options', 1
+RECONFIGURE WITH OVERRIDE
+GO
+EXECUTE SP_CONFIGURE 'xp_cmdshell', '1'
+RECONFIGURE WITH OVERRIDE
+GO
+EXECUTE SP_CONFIGURE 'show advanced options', 0
+RECONFIGURE WITH OVERRIDE
+GO
+
+--2, grant permission to xp_cmdshell
+USE master
+CREATE LOGIN JohnDoe WITH PASSWORD = 'jlkw#.6('
+
+--Note, we are in the master database!!!
+CREATE USER JohnDoe FROM LOGIN JohnDoe
+
+--Run as login x
+EXECUTE AS login = 'JohnDoe'
+--Below fails, no execute permission on xp_cmdshell
+EXEC xp_cmdshell 'DIR C:\*.*'
+REVERT
+GO
+
+--Note, we are in the master database!!!
+GRANT EXECUTE ON xp_cmdshell TO JohnDoe
+
+--Try again
+EXECUTE AS login = 'JohnDoe'
+--Execution of xp_cmdshell is allowed.
+--But I haven't configured the proxy account...
+EXEC xp_cmdshell 'DIR C:\*.*'
+REVERT
+GO
+
+--3, specify the proxy account for non-syadmins
+--Replace obvious parts!
+EXEC sp_xp_cmdshell_proxy_account 'Domain\WinAccount','pwd'
+EXECUTE AS login = 'JohnDoe'
+--Execution of xp_cmdshell is allowed.
+--And executes successfully!!!
+EXEC xp_cmdshell 'DIR C:\*.*'
+REVERT
+
+--Cleanup
+EXEC sp_xp_cmdshell_proxy_account null
+
+DROP USER JohnDoe
+DROP LOGIN JohnDoe
+EXEC sp_configure 'xp_cmdshell', 0
+RECONFIGURE
