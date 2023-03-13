@@ -21,3 +21,5 @@ content descriptions:
 * Purge_OLD_Logins          - clean an entire server of old logins, no longer in the login folder
 * Set_Log_Space_Free        - find all logs and set the free space free
 * SPID_txt_lookup           - look up the syntax text of a SPID
+* sql_uptime                - totaly server uptime and services status
+* 
