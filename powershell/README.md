@@ -15,4 +15,5 @@ content descriptions:
 * convert_HStrings           - string splitter function
 * Start-Monitor              - watch a group of services passed in with HStrings
 * monitor_prod               - start the monitor with passed strings of servers
+* AD_Query                   - query active directory
 * 
