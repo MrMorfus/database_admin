@@ -16,4 +16,4 @@ content descriptions:
 * Start-Monitor              - watch a group of services passed in with HStrings
 * monitor_prod               - start the monitor with passed strings of servers
 * AD_Query                   - query active directory
-* 
+* stop_pending_check         - look for a service using a list and attempt to restart it
