@@ -1,0 +1,13 @@
+$HS=@"
+SPIDERUT
+GALANTUT
+COOPERUT
+FIATUT
+DIABLOUT
+PORSCHEUT
+GUMPERT
+ENZO
+URRACO
+"@
+
+start-monitor (convert-HString $HS)
