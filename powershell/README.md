@@ -12,4 +12,7 @@ content descriptions:
 * Update_DTC_Restart_service - adjust registry keys and restart the DTC service for DTS packages
 * Powershell_Backup          - fancy backup automation for MSSQL server
 * Restart_SQL_Service        - restart SQL services and send emails
+* convert_HStrings           - string splitter function
+* Start-Monitor              - watch a group of services passed in with HStrings
+* monitor_prod               - start the monitor with passed strings of servers
 * 
