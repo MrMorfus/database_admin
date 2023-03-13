@@ -13,3 +13,5 @@ content descriptions:
 * EXEC_ALL_sqljobs          - start all jobs on the sql server
 * Find_nonascii_char        - search for any non-ascii character in a column
 * LinkedServer_Add_Acct     - add a linked server with this account based on a list of servers
+* ForAllDBs_Add_AD_acct     - add an active directory account for every database on the server
+* 
