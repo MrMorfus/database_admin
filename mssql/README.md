@@ -18,4 +18,4 @@ content descriptions:
 * MassUpdate_SQLjobs_SSRS   - update the owner for sql scheduled jobs and ssrs reports
 * New_Server_Setup          - new instance setup: set tempdb, set compression, set dbmail, set mem, etc
 * Permissions_SQL           - additional permissions to allow view access to things
-* 
+* Purge_OLD_Logins          - clean an entire server of old logins, no longer in the login folder
