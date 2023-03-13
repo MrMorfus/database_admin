@@ -9,4 +9,4 @@ content descriptions:
 * ChangePassword            - update a linked server password
 * Copy_SIDs_for_accoiunts   - copy the SID from one account on a server to another for RPC IN/OUT on linked servers
 * DangerSQL                 - instructions and permissions to turn XP_commandshell on
-* 
+* SSRS_Jobs_Lookup          - reports and lookups for ssrs jobs/reports/email updates/etc
