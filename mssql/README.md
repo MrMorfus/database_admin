@@ -12,3 +12,4 @@ content descriptions:
 * SSRS_Jobs_Lookup          - reports and lookups for ssrs jobs/reports/email updates/etc
 * EXEC_ALL_sqljobs          - start all jobs on the sql server
 * Find_nonascii_char        - search for any non-ascii character in a column
+* LinkedServer_Add_Acct     - add a linked server with this account based on a list of servers
