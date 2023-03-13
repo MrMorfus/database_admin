@@ -24,4 +24,5 @@ content descriptions:
 * sql_uptime                - totaly server uptime and services status
 * SSRS_Listing_Report       - various reports for ssrs, and reverse lookups
 * Kill_all_per_db           - kill all sessions per database
+* DTS_Copy_ServerToServer   - copy a DTS package from one server to another 
 * 
