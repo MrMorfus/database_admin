@@ -5,4 +5,6 @@ content descriptions:
 * BackupTDE                            - backup all the certs and keys
 * RemoveTDE                            - remove TDE from all databases
 * RestoreTDE                           - restore all the certs and keys
-* 
+* StatusOfTDE                          - status monitor
+* TurnOffTDE                           - turn off
+* TurnOnTDE                            - turn on
