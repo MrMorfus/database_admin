@@ -33,4 +33,4 @@ content descriptions:
 * QueryADGroupMembers       - stored procedure used by the query script
 * QueryADGroups             - stored procedure used by the query script
 * Restrict_logins_by_IP     - limit the IP addresses allowed to access a server
-* 
+* DEAUTH_users              - find a list of users and kill them
