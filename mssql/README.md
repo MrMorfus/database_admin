@@ -26,4 +26,5 @@ content descriptions:
 * Kill_all_per_db           - kill all sessions per database
 * DTS_Copy_ServerToServer   - copy a DTS package from one server to another 
 * populate_envir            - recon scripts to collect information about all the databases on a server
+* Tracely_Default_objs      - enable the default trace and start collecting object info 
 * 
