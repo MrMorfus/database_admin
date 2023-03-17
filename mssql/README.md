@@ -29,4 +29,7 @@ content descriptions:
 * Tracely_Default_objs      - enable the default trace and start collecting object info 
 * Audit_logins              - stored procedures to execute for logins
 * Audit_roles               - stored procedure to execute for roles
+* QueryAD                   - main script to execute to find AD users and their groups
+* QueryADGroupMembers       - stored procedure used by the query script
+* QueryADGroups             - stored procedure used by the query script
 * 
