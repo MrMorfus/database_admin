@@ -32,4 +32,5 @@ content descriptions:
 * QueryAD                   - main script to execute to find AD users and their groups
 * QueryADGroupMembers       - stored procedure used by the query script
 * QueryADGroups             - stored procedure used by the query script
+* Restrict_logins_by_IP     - limit the IP addresses allowed to access a server
 * 
