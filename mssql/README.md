@@ -27,4 +27,6 @@ content descriptions:
 * DTS_Copy_ServerToServer   - copy a DTS package from one server to another 
 * populate_envir            - recon scripts to collect information about all the databases on a server
 * Tracely_Default_objs      - enable the default trace and start collecting object info 
+* Audit_logins              - stored procedures to execute for logins
+* Audit_roles               - stored procedure to execute for roles
 * 
