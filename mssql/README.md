@@ -34,3 +34,4 @@ content descriptions:
 * QueryADGroups             - stored procedure used by the query script
 * Restrict_logins_by_IP     - limit the IP addresses allowed to access a server
 * DEAUTH_users              - find a list of users and kill them
+* parse_JSON                - pasrse a JSON out of a max varchar, adjust the compatibility mode first
