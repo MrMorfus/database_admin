@@ -4,7 +4,7 @@ services:
   mssql-liquibase:
     container_name: mssql-liquibase
     image: liquibase/liquibase
-    command: --url=jdbc:sqlserver://mssql-db:1433;encrypt=true;username=sa;password=mssqlSA; --changeLogFile=changelog.xml update
+    command: --url=jdbc:sqlserver://mssql-db:1433;encrypt=true;username=sa;password=FL@m1n6o5; --changeLogFile=changelog.xml update
     volumes:
       - ./config/changelog.xml:/liquibase/changelog.xml
       - ./scripts:/liquibase/scripts
