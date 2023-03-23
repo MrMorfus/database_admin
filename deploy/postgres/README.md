@@ -2,12 +2,12 @@
 
 1- Run docker compose for the database
 ```bash
-Docker-compose -f docker-compose.database.yml up
+Docker-compose -f docker-compose.database.yml up -d
 ```
 
 2- Run docker compose for the Liquibase migration
 ```bash
-Docker-compose -f docker-compose.liquibase.yml up
+Docker-compose -f docker-compose.liquibase.yml up -d
 ```
 
 All scripts inside /scripts folder will be executed on target database. Which can be updated in the changelog.xml
