@@ -5,7 +5,7 @@ volumes:
 
 services:
   test-db:
-    container_name: postgresdb-db
+    container_name: postgres-db
     image: postgres:12
     ports:
       - "5432:5432"
