@@ -1,4 +1,4 @@
-
+USE SHELL;
 /*******************************************************************************
    Create Tables
 ********************************************************************************/
@@ -42,7 +42,7 @@ CREATE TABLE "Employee"
     "FirstName" VARCHAR(20) NOT NULL,
     "Title" VARCHAR(30),
     "ReportsTo" INT,
-    "BirthDate" TIMESTAMP,
+    "BirthDate" DATE,
     "HireDate" TIMESTAMP,
     "Address" VARCHAR(70),
     "City" VARCHAR(40),
