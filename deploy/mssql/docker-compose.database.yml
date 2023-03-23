@@ -27,4 +27,4 @@ volumes:
   mssql_log:
   mssql_backup:
 networks:
-  msqql-net:
+  mssql-net:
