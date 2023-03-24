@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   db:
+    container_name: mysql_db
     image: mysql:8.0
     cap_add:
       - SYS_NICE
