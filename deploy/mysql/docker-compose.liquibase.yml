@@ -6,7 +6,7 @@ services:
     image: liquibase/liquibase
     environment:
       INSTALL_MYSQL: 1
-    command: --url=jdbc:mysql://mysql_db_1:3306/SHELL?user=root&password=FL@m1n6o5&autoReconnect=true&useSSL=false --changeLogFile=changelog.xml update
+    command: --url=jdbc:mysql://mysql_db:3306/SHELL?user=root&password=FL@m1n6o5&autoReconnect=true&useSSL=false --changeLogFile=changelog.xml update
     volumes:
       - ./config/changelog.xml:/liquibase/changelog.xml
       - ./scripts:/liquibase/scripts
