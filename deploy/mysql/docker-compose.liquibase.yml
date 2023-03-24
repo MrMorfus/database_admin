@@ -4,6 +4,8 @@ services:
   mysql-liquibase:
     container_name: mysql-liquibase
     image: liquibase/liquibase
+    environment:
+      INSTALL_MYSQL: true
     command: --url=jdbc:mysql://mysql_db:3306/SHELL?user=root&password=FL@m1n6o5 --changeLogFile=changelog.xml update
     volumes:
       - ./config/changelog.xml:/liquibase/changelog.xml
