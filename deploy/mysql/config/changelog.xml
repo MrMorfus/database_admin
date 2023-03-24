@@ -5,7 +5,5 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
-  <sql dbms="mysql" splitStatements="true" endDelimiter="/" stripComments="true">
-    <includeAll  path="/scripts/"></includeAll>
-  </sql>
+    <includeAll  path="/scripts/"><sql dbms="mysql" splitStatements="true" endDelimiter="/" stripComments="true"></sql></includeAll>
 </databaseChangeLog>
