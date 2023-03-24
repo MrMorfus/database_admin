@@ -1,0 +1,16 @@
+version: "3.1"
+
+services:
+  mariadb-liquibase:
+    container_name: mariadb-liquibase
+    image: liquibase/liquibase
+    environment:
+      INSTALL_MYSQL: 1
+    command: --url=jdbc:mariadb://maria_db:3306/SHELL?user=root&password=FL@m1n6o5&autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true --changeLogFile=changelog.xml update
+    volumes:
+      - ./config/changelog.xml:/liquibase/changelog.xml
+      - ./scripts:/liquibase/scripts
+    networks:
+      - mariadb-net
+networks:
+  mariadb-net:
