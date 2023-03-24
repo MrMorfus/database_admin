@@ -1,183 +1,68 @@
-/*******************************************************************************
-   Create Tables
-********************************************************************************/
-CREATE TABLE "Album"
-(
-    "AlbumId" INT NOT NULL,
-    "Title" VARCHAR(160) NOT NULL,
-    "ArtistId" INT NOT NULL,
-    CONSTRAINT "PK_Album" PRIMARY KEY  ("AlbumId")
+USE SHELL;
+CREATE TABLE employees (
+    emp_no      INT             NOT NULL,  -- UNSIGNED AUTO_INCREMENT??
+    birth_date  DATE            NOT NULL,
+    first_name  VARCHAR(14)     NOT NULL,
+    last_name   VARCHAR(16)     NOT NULL,
+    gender      ENUM ('M','F')  NOT NULL,  -- Enumeration of either 'M' or 'F'  
+    hire_date   DATE            NOT NULL,
+    PRIMARY KEY (emp_no)                   -- Index built automatically on primary-key column
+                                           -- INDEX (first_name)
+                                           -- INDEX (last_name)
 );
-
-CREATE TABLE "Artist"
-(
-    "ArtistId" INT NOT NULL,
-    "Name" VARCHAR(120),
-    CONSTRAINT "PK_Artist" PRIMARY KEY  ("ArtistId")
+CREATE TABLE departments (
+    dept_no     CHAR(4)         NOT NULL,  -- in the form of 'dxxx'
+    dept_name   VARCHAR(40)     NOT NULL,
+    PRIMARY KEY (dept_no),                 -- Index built automatically
+    UNIQUE  KEY (dept_name)                -- Build INDEX on this unique-value column
 );
-
-CREATE TABLE "Customer"
-(
-    "CustomerId" INT NOT NULL,
-    "FirstName" VARCHAR(40) NOT NULL,
-    "LastName" VARCHAR(20) NOT NULL,
-    "Company" VARCHAR(80),
-    "Address" VARCHAR(70),
-    "City" VARCHAR(40),
-    "State" VARCHAR(40),
-    "Country" VARCHAR(40),
-    "PostalCode" VARCHAR(10),
-    "Phone" VARCHAR(24),
-    "Fax" VARCHAR(24),
-    "Email" VARCHAR(60) NOT NULL,
-    "SupportRepId" INT,
-    CONSTRAINT "PK_Customer" PRIMARY KEY  ("CustomerId")
+CREATE TABLE dept_emp (
+    emp_no      INT         NOT NULL,
+    dept_no     CHAR(4)     NOT NULL,
+    from_date   DATE        NOT NULL,
+    to_date     DATE        NOT NULL,
+    KEY         (emp_no),   -- Build INDEX on this non-unique-value column
+    KEY         (dept_no),  -- Build INDEX on this non-unique-value column
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) ON DELETE CASCADE,
+           -- Cascade DELETE from parent table 'employee' to this child table
+           -- If an emp_no is deleted from parent 'employee', all records
+           --  involving this emp_no in this child table are also deleted
+           -- ON UPDATE CASCADE??
+    FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,
+           -- ON UPDATE CASCADE??
+    PRIMARY KEY (emp_no, dept_no)
+           -- Might not be unique?? Need to include from_date
 );
-
-CREATE TABLE "Employee"
-(
-    "EmployeeId" INT NOT NULL,
-    "LastName" VARCHAR(20) NOT NULL,
-    "FirstName" VARCHAR(20) NOT NULL,
-    "Title" VARCHAR(30),
-    "ReportsTo" INT,
-    "BirthDate" DATE,
-    "HireDate" TIMESTAMP,
-    "Address" VARCHAR(70),
-    "City" VARCHAR(40),
-    "State" VARCHAR(40),
-    "Country" VARCHAR(40),
-    "PostalCode" VARCHAR(10),
-    "Phone" VARCHAR(24),
-    "Fax" VARCHAR(24),
-    "Email" VARCHAR(60),
-    CONSTRAINT "PK_Employee" PRIMARY KEY  ("EmployeeId")
+CREATE TABLE dept_manager (
+   dept_no      CHAR(4)  NOT NULL,
+   emp_no       INT      NOT NULL,
+   from_date    DATE     NOT NULL,
+   to_date      DATE     NOT NULL,
+   KEY         (emp_no),
+   KEY         (dept_no),
+   FOREIGN KEY (emp_no)  REFERENCES employees (emp_no)    ON DELETE CASCADE,
+                                  -- ON UPDATE CASCADE??
+   FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,
+   PRIMARY KEY (emp_no, dept_no)  -- might not be unique?? Need from_date
 );
-
-CREATE TABLE "Genre"
-(
-    "GenreId" INT NOT NULL,
-    "Name" VARCHAR(120),
-    CONSTRAINT "PK_Genre" PRIMARY KEY  ("GenreId")
+CREATE TABLE titles (
+    emp_no      INT          NOT NULL,
+    title       VARCHAR(50)  NOT NULL,
+    from_date   DATE         NOT NULL,
+    to_date     DATE,
+    KEY         (emp_no),
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) ON DELETE CASCADE,
+                         -- ON UPDATE CASCADE??
+    PRIMARY KEY (emp_no, title, from_date)
+       -- This ensures unique combination. 
+       -- An employee may hold the same title but at different period
 );
-
-CREATE TABLE "Invoice"
-(
-    "InvoiceId" INT NOT NULL,
-    "CustomerId" INT NOT NULL,
-    "InvoiceDate" TIMESTAMP NOT NULL,
-    "BillingAddress" VARCHAR(70),
-    "BillingCity" VARCHAR(40),
-    "BillingState" VARCHAR(40),
-    "BillingCountry" VARCHAR(40),
-    "BillingPostalCode" VARCHAR(10),
-    "Total" NUMERIC(10,2) NOT NULL,
-    CONSTRAINT "PK_Invoice" PRIMARY KEY  ("InvoiceId")
+CREATE TABLE salaries (
+    emp_no      INT    NOT NULL,
+    salary      INT    NOT NULL,
+    from_date   DATE   NOT NULL,
+    to_date     DATE   NOT NULL,
+    KEY         (emp_no),
+    FOREIGN KEY (emp_no) REFERENCES employees (emp_no) ON DELETE CASCADE,
+    PRIMARY KEY (emp_no, from_date)
 );
-
-CREATE TABLE "InvoiceLine"
-(
-    "InvoiceLineId" INT NOT NULL,
-    "InvoiceId" INT NOT NULL,
-    "TrackId" INT NOT NULL,
-    "UnitPrice" NUMERIC(10,2) NOT NULL,
-    "Quantity" INT NOT NULL,
-    CONSTRAINT "PK_InvoiceLine" PRIMARY KEY  ("InvoiceLineId")
-);
-
-CREATE TABLE "MediaType"
-(
-    "MediaTypeId" INT NOT NULL,
-    "Name" VARCHAR(120),
-    CONSTRAINT "PK_MediaType" PRIMARY KEY  ("MediaTypeId")
-);
-
-CREATE TABLE "Playlist"
-(
-    "PlaylistId" INT NOT NULL,
-    "Name" VARCHAR(120),
-    CONSTRAINT "PK_Playlist" PRIMARY KEY  ("PlaylistId")
-);
-
-CREATE TABLE "PlaylistTrack"
-(
-    "PlaylistId" INT NOT NULL,
-    "TrackId" INT NOT NULL,
-    CONSTRAINT "PK_PlaylistTrack" PRIMARY KEY  ("PlaylistId", "TrackId")
-);
-
-CREATE TABLE "Track"
-(
-    "TrackId" INT NOT NULL,
-    "Name" VARCHAR(200) NOT NULL,
-    "AlbumId" INT,
-    "MediaTypeId" INT NOT NULL,
-    "GenreId" INT,
-    "Composer" VARCHAR(220),
-    "Milliseconds" INT NOT NULL,
-    "Bytes" INT,
-    "UnitPrice" NUMERIC(10,2) NOT NULL,
-    CONSTRAINT "PK_Track" PRIMARY KEY  ("TrackId")
-);
-
-
-
-/*******************************************************************************
-   Create Primary Key Unique Indexes
-********************************************************************************/
-
-/*******************************************************************************
-   Create Foreign Keys
-********************************************************************************/
-ALTER TABLE "Album" ADD CONSTRAINT "FK_AlbumArtistId"
-    FOREIGN KEY ("ArtistId") REFERENCES "Artist" ("ArtistId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_AlbumArtistId" ON "Album" ("ArtistId");
-
-ALTER TABLE "Customer" ADD CONSTRAINT "FK_CustomerSupportRepId"
-    FOREIGN KEY ("SupportRepId") REFERENCES "Employee" ("EmployeeId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_CustomerSupportRepId" ON "Customer" ("SupportRepId");
-
-ALTER TABLE "Employee" ADD CONSTRAINT "FK_EmployeeReportsTo"
-    FOREIGN KEY ("ReportsTo") REFERENCES "Employee" ("EmployeeId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_EmployeeReportsTo" ON "Employee" ("ReportsTo");
-
-ALTER TABLE "Invoice" ADD CONSTRAINT "FK_InvoiceCustomerId"
-    FOREIGN KEY ("CustomerId") REFERENCES "Customer" ("CustomerId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_InvoiceCustomerId" ON "Invoice" ("CustomerId");
-
-ALTER TABLE "InvoiceLine" ADD CONSTRAINT "FK_InvoiceLineInvoiceId"
-    FOREIGN KEY ("InvoiceId") REFERENCES "Invoice" ("InvoiceId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_InvoiceLineInvoiceId" ON "InvoiceLine" ("InvoiceId");
-
-ALTER TABLE "InvoiceLine" ADD CONSTRAINT "FK_InvoiceLineTrackId"
-    FOREIGN KEY ("TrackId") REFERENCES "Track" ("TrackId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_InvoiceLineTrackId" ON "InvoiceLine" ("TrackId");
-
-ALTER TABLE "PlaylistTrack" ADD CONSTRAINT "FK_PlaylistTrackPlaylistId"
-    FOREIGN KEY ("PlaylistId") REFERENCES "Playlist" ("PlaylistId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-ALTER TABLE "PlaylistTrack" ADD CONSTRAINT "FK_PlaylistTrackTrackId"
-    FOREIGN KEY ("TrackId") REFERENCES "Track" ("TrackId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_PlaylistTrackTrackId" ON "PlaylistTrack" ("TrackId");
-
-ALTER TABLE "Track" ADD CONSTRAINT "FK_TrackAlbumId"
-    FOREIGN KEY ("AlbumId") REFERENCES "Album" ("AlbumId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_TrackAlbumId" ON "Track" ("AlbumId");
-
-ALTER TABLE "Track" ADD CONSTRAINT "FK_TrackGenreId"
-    FOREIGN KEY ("GenreId") REFERENCES "Genre" ("GenreId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_TrackGenreId" ON "Track" ("GenreId");
-
-ALTER TABLE "Track" ADD CONSTRAINT "FK_TrackMediaTypeId"
-    FOREIGN KEY ("MediaTypeId") REFERENCES "MediaType" ("MediaTypeId") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
-CREATE INDEX "IFK_TrackMediaTypeId" ON "Track" ("MediaTypeId");
