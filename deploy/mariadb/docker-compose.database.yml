@@ -12,6 +12,7 @@ services:
       - data:/var/lib/mysql
     ports:
       - "3306:3306"
-    networks: mariadb-net
+    networks:
+      - mariadb-net
 networks:
    mariadb-net:
