@@ -12,6 +12,10 @@ services:
       - '3306:3306'
     volumes:
       - db:/var/lib/mysql
+    networks:
+      - mysql-net
 volumes:
   db:
     driver: local
+networks:
+  mysql-net:
