@@ -1,4 +1,3 @@
-USE SHELL;
 CREATE TABLE employees (
     emp_no      INT             NOT NULL,  -- UNSIGNED AUTO_INCREMENT??
     birth_date  DATE            NOT NULL,
