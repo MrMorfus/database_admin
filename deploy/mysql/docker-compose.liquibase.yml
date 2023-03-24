@@ -5,6 +5,7 @@ services:
     container_name: mysql-liquibase
     image: liquibase/liquibase
     command: --url=jdbc:mysql://mysql_db:3306/SHELL --changeLogFile=changelog.xml update
+    volumes:
       - ./config/changelog.xml:/liquibase/changelog.xml
       - ./scripts:/liquibase/scripts
     networks:
