@@ -7,9 +7,10 @@ services:
     container_name: maria_db
     environment:
       MYSQL_ROOT_PASSWORD: FL@m1n6o5
-      MYSQL_DATABASE: maria_db
+      MYSQL_DATABASE: mariadb
     volumes:
       - data:/var/lib/mysql
+      - /opt/mariadb:/temp
     ports:
       - "3306:3306"
     networks:
