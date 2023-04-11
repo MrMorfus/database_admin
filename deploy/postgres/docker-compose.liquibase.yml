@@ -4,7 +4,8 @@ services:
   postgres-liquibase:
     container_name: postgres-liquibase
     image: liquibase/liquibase
-    command: --url=jdbc:postgresql://postgres-db:5432/french?user=postgres&password=postgres --changeLogFile=changelog.xml update  # database name is before the ?
+    command: --url=jdbc:postgresql://postgres_db:5432/french?user=postgres&password=FL@m1n6o5 --changeLogFile=changelog.xml update  # database name is before the ?
     volumes:
       - ./config/changelog.xml:/liquibase/changelog.xml         # /host/path/loc:/container/path/loc
       - ./scripts:/liquibase/scripts
+    network_mode: postgres_post-net
