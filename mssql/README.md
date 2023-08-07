@@ -7,7 +7,7 @@ content descriptions:
 * Activity_Monitor          - two table variables to catch and report out processes that are blocked, and by whom
 * AssignPerms_Single_Object - assign accounts to single datbase objects
 * ChangePassword            - update a linked server password
-* Copy_SIDs_for_accoiunts   - copy the SID from one account on a server to another for RPC IN/OUT on linked servers
+* Copy_SIDs_for_accounts   - copy the SID from one account on a server to another for RPC IN/OUT on linked servers
 * DangerSQL                 - instructions and permissions to turn XP_commandshell on
 * SSRS_Jobs_Lookup          - reports and lookups for ssrs jobs/reports/email updates/etc
 * EXEC_ALL_sqljobs          - start all jobs on the sql server
