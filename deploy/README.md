@@ -1,1 +1,1 @@
-# Deploying SQL code to platforms
+# Deploying SQL code to different platforms
