@@ -10,11 +10,11 @@ services:
     ports:
       - 1434:1434
     volumes:
-      - /opt/mssql/data:/var/opt/mssql/data
-      - /opt/mssql/log:/var/opt/mssql/log
-      - /opt/mssql/backup:/var/opt/mssql/backup
-      - /opt/mssql:/temp
-      - /opt/mssql/entrypoint.sh:/docker-entrypoint-initdb.d/entrypoint.sh
+      - /opt/ssis/data:/var/opt/mssql/data
+      - /opt/ssis/log:/var/opt/mssql/log
+      - /opt/ssis/backup:/var/opt/mssql/backup
+      - /opt/ssis:/temp
+      - /opt/ssis/entrypoint.sh:/docker-entrypoint-initdb.d/entrypoint.sh
     environment:
       # List of all SQL Server environment variables:
       - ACCEPT_EULA=Y
