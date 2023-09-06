@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: DockerfileSSIS
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: root
+    container_name: mssql_ssis
+    ports:
+      - 1434:1434
+    volumes:
+      - /opt/mssql/data:/var/opt/mssql/data
+      - /opt/mssql/log:/var/opt/mssql/log
+      - /opt/mssql/backup:/var/opt/mssql/backup
+      - /opt/mssql:/temp
+      - /opt/mssql/entrypoint.sh:/docker-entrypoint-initdb.d/entrypoint.sh
+    environment:
+      # List of all SQL Server environment variables:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+      - MSSQL_SA_PASSWORD=FL@m1n6o5
+      - MSSQL_DATA_DIR=/var/opt/mssql/data
+      - MSSQL_LOG_DIR=/var/opt/mssql/log
+      - MSSQL_BACKUP_DIR=/var/opt/mssql/backup
+    networks:
+      - mssql-net-ssis
+volumes:
+  mssql_data:
+  mssql_log:
+  mssql_backup:
+networks:
+  mssql-net-ssis:
