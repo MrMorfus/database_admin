@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       - MYSQL_DATABASE=mysql_db
-      - MYSQL_ROOT_PASSWORD=FL@m1n6o5
+      - MYSQL_ROOT_PASSWORD=
     ports:
       - '3306:3306'
     volumes:
