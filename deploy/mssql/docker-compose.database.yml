@@ -19,7 +19,7 @@ services:
       # List of all SQL Server environment variables:
       - ACCEPT_EULA=Y
       - MSSQL_PID=Express
-      - MSSQL_SA_PASSWORD=FL@m1n6o5
+      - MSSQL_SA_PASSWORD=
       - MSSQL_DATA_DIR=/var/opt/mssql/data
       - MSSQL_LOG_DIR=/var/opt/mssql/log
       - MSSQL_BACKUP_DIR=/var/opt/mssql/backup
