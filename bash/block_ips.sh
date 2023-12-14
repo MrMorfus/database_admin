@@ -33,4 +33,5 @@ while IFS= read -r line; do
 done < "$data_file"
 
 netfilter-persistent save
+netfilter-persistent reload
 netfilter-persistent restart
