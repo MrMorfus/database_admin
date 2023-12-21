@@ -25,7 +25,7 @@ while IFS= read -r line; do
 
   # If an IP address is found and not processed, add the corresponding iptables command
   if [ -n "$ip_address" ] && [ -z "${processed_ips[$ip_address]}" ]; then
-    iptables -A INPUT -s "$ip_address" -j DROP
+    iptables -A INPUT -s "$ip_address" -j REJECT
     processed_ips["$ip_address"]=1
     echo "Blocked unique IP address: $ip_address"
   fi
