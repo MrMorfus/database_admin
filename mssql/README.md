@@ -32,6 +32,7 @@ content descriptions:
 * QueryAD                   - main script to execute to find AD users and their groups
 * QueryADGroupMembers       - stored procedure used by the query script
 * QueryADGroups             - stored procedure used by the query script
+* Linked_backup             - backup a database through a linked server
 * Restrict_logins_by_IP     - limit the IP addresses allowed to access a server
 * DEAUTH_users              - find a list of users and kill them
 * parse_JSON                - pasrse a JSON out of a max varchar, adjust the compatibility mode first
