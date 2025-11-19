@@ -17,3 +17,4 @@ content descriptions:
 * monitor_prod               - start the monitor with passed strings of servers
 * AD_Query                   - query active directory
 * stop_pending_check         - look for a service using a list and attempt to restart it
+* timer_manager              - start, stop and clear timers for various activities
